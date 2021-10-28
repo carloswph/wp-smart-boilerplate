@@ -36,7 +36,18 @@ class Generator
 		$tasks = $this->options;
 		$compiling = $tasks['compiling'];
 		
-		//if(in_array('js', $compiling)
+		$script = "// Assets to compile and how";
+		
+		if($compiling['js'] === true) {
+		    $script .= "mix.js(`${resources}/js/*.js`, `${pluginpath}/dist/js/bundle.js`);" . PHP_EOL;
+		    if($tasks['babel'] === true) {
+		        $script .= "mix.babel(`${pluginpath}/dist/js/bundle.js`, `${pluginpath}/dist/js/bundle.es5.js`);" . PHP_EOL;
+		    }
+		}
+		
+		if($tasks['browsersync'] === true) {
+		    $script .= "mix.browserSync('" . site_url() . "');" . PHP_EOL;
+		}
 	}
 
 	public function save()

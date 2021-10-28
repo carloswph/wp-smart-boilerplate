@@ -19,12 +19,21 @@ use SmartBoilerplate\Config;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$config = new Config([
+$options = [
     'root' => plugin_dir_path(__FILE__),
     'slug' => trailingslashit(dirname(plugin_basename(__FILE__))),
-    'browsersync' => true,
-    'babel' => true,
-    'compiling' => ['js']
-]);
+    'browsersync' => false,
+    'babel' => false,
+    'compiling' => [
+        'js' => true,
+        'css' => true,
+        'sass' => false.
+        'less' => false,
+        'jsx' => false,
+        'vue' => false,
+        'svelte' => false
+    ]
+];
 
+$config = new Config($options);
 $config->generate();
