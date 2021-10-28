@@ -4,11 +4,19 @@
   "description": "WP smart boilerplate using Laravel Mix for assets and automation on Git tasks.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
   },
   "author": "Carlos Matos - WP Helpers",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "laravel-mix": "^6.0.34"
   },
   "dependencies": {
